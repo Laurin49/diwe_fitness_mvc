@@ -1,5 +1,4 @@
-    <?php
-    require_once '../app/bootstrap.php';
-    echo "Startseite";
-    // Init Core Library
-    // $init = new Core();
+<?php
+require_once '../app/bootstrap.php';
+// Init Router Library
+$init = new Router();
