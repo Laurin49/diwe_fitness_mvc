@@ -7,7 +7,7 @@ class Workout {
     }
 
     public function readAll() {
-        $sql = "SELECT * FROM workouts ORDER BY datum";
+        $sql = "SELECT * FROM workouts ORDER BY datum DESC";
         $this->db->query($sql);
         $results = $this->db->resultSet();
         return $results;
