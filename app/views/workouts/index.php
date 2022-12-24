@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
+    <?php flash('workout_message'); ?>
     <div class="mt-2">
         <a class="btn btn-secondary" role="button" href="<?php echo URLROOT; ?>/workouts/add">
             <i class="fa fa-plus"></i> Add Workout

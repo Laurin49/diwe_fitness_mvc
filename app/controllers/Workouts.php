@@ -34,6 +34,7 @@ class Workouts extends Controller {
             if(empty($data['name_err']) && empty($data['datum_err'])) {
                 // Validated
                 if ($this->workoutModel->create($data)) {
+                    flash('workout_message', 'Workout Added');
                     redirect('workouts');
                 } else {
                     die('Something went wrong adding new Workout');
@@ -70,6 +71,7 @@ class Workouts extends Controller {
             if(empty($data['name_err']) && empty($data['datum_err'])) {
                 // Validated
                 if ($this->workoutModel->update($data)) {
+                    flash('workout_message', 'Workout Updated');
                      redirect('workouts');
                 } else {
                     die('Something went wrong updating Workout');
@@ -90,8 +92,8 @@ class Workouts extends Controller {
 
     public function delete($id)
     {
-        $workout = $this->workoutModel->readWorkoutById($id);
         if ($this->workoutModel->delete($id)) {
+            flash('workout_message', 'Workout Deleted');
             redirect('workouts');
         } else {
             die('Something went wrong deleting Workout');
