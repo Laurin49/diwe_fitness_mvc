@@ -3,10 +3,11 @@ class Workouts extends Controller {
     public function __construct()
     {
         $this->workoutModel = $this->model('Workout');
+        $this->userModel = $this->model('User');
     }
 
     public function index() {
-        $workouts = $this->workoutModel->readAll();
+        $workouts = $this->workoutModel->readAllByUserId($_SESSION['user_id']);
         $data = [
             'workouts' => $workouts
         ];
