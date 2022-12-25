@@ -13,11 +13,20 @@ class Workout {
         return $results;
     }
 
+    public function readAllByUserId($user_id) {
+        $sql = "SELECT * FROM workouts WHERE user_id = :userid ORDER BY datum DESC";
+        $this->db->query($sql);
+        $this->db->bind(":userid", $user_id);
+        $results = $this->db->resultSet();
+        return $results;
+    }
+
     public function create($data) {
-        $sql = "INSERT INTO workouts (name, datum) VALUES (:name, :datum)";
+        $sql = "INSERT INTO workouts (name, datum, user_id) VALUES (:name, :datum, :user_id)";
         $this->db->query($sql);
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':datum', $data['datum']);
+        $this->db->bind(':user_id', $_SESSION['user_id']);
         if($this->db->execute()){
             return true;
         } else {
